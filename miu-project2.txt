@@ -1,0 +1,5 @@
+Repo Location
+https://github.com/AlucardFair/MiU-Project-2
+
+Live gh-page
+http://alucardfair.github.com/MiU-Project-2/index.html

@@ -10,7 +10,7 @@ https://github.com/AlucardFair/MiU-Project-2
 window.addEventListener("DOMContentLoaded", function() {
 	
 	// getElementById function //
-	function $(x) {
+	function ge(x) {
 		var elementID = document.getElementById(x);
 		return elementID;
 	};
@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	// Create Select Element with Options//
 	function makeWorkoutStyle() {
 		var formTag = document.getElementsByTagName('form'),
-			selectList = $('select'),
+			selectList = ge('select'),
 			makeSelect = document.createElement('select');
 			makeSelect.setAttribute("id", "styles");
 		for(var i=0, j=workoutTypes.length; i<j; i++) {
@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	// //
 	function getCheckboxValue() {
-		if ($('favorite').checked) {
+		if (ge('favorite').checked) {
 			favoriteValue = "Yes";
 		}else{
 			favoriteValue = "No";
@@ -54,19 +54,19 @@ window.addEventListener("DOMContentLoaded", function() {
 	function toggle(x) {
 		switch(x) {
 			case "on":
-				$('workoutForm').style.display = "none";
-				$('showData').style.display = "none";
-				$('clearData').style.display = "inline";
-				$('startNew').style.display = "inline";
-				$('saveData').style.display = "none";
+				ge('workoutForm').style.display = "none";
+				ge('showData').style.display = "none";
+				ge('clearData').style.display = "inline";
+				ge('startNew').style.display = "inline";
+				ge('saveData').style.display = "none";
 				break;
 			case "off":
-				$('workoutForm').style.display = "block";
-				$('showData').style.display = "inline";
-				$('clearData').style.display = "inline";
-				$('startNew').style.display = "none";
-				$('saveData').style.display = "inline";
-				$('items').style.display = "none";
+				ge('workoutForm').style.display = "block";
+				ge('showData').style.display = "inline";
+				ge('clearData').style.display = "inline";
+				ge('startNew').style.display = "none";
+				ge('saveData').style.display = "inline";
+				ge('items').style.display = "none";
 				break;
 			default:
 				return false;
@@ -85,13 +85,13 @@ window.addEventListener("DOMContentLoaded", function() {
 		getCheckboxValue();
 		getSelectedRadio();
 		var item 				= {};
-			item.training 		= ["Training Style: ", $('styles').value];
-			item.wname			= ["Workout Name: ", $('wname').value];
+			item.training 		= ["Training Style: ", ge('styles').value];
+			item.wname			= ["Workout Name: ", ge('wname').value];
 			item.favorite		= ["Favorite: ", favoriteValue];
-			item.howlong		= ["How Long: ", $('howlong').value + " minutes"];
+			item.howlong		= ["How Long: ", ge('howlong').value + " minutes"];
 			item.timeofday		= ["Preferred Time: ", timeValue];
-			item.completiondate	= ["Completion Date: ", $('completiondate').value];
-			item.comments		= ["Self-Motivation: ", $('comments').value];
+			item.completiondate	= ["Completion Date: ", ge('completiondate').value];
+			item.comments		= ["Self-Motivation: ", ge('comments').value];
 			
 		// Save Data into Local Storage with JSON.stringify //
 		localStorage.setItem(id, JSON.stringify(item));
@@ -110,9 +110,9 @@ window.addEventListener("DOMContentLoaded", function() {
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
-		document.body.insertBefore(makeDiv, $('foot'));
+		document.body.insertBefore(makeDiv, ge('foot'));
 		// Set 'items' display //
-		$('items').style.display = "block";
+		ge('items').style.display = "block";
 		for(var i=0, j=localStorage.length; i<j; i++) {
 			var makeLi = document.createElement('li');
 			makeLi.style.fontSize = "25px";
@@ -189,12 +189,12 @@ window.addEventListener("DOMContentLoaded", function() {
 		// Turn form back on //
 		toggle("off");
 		// Populate form fields //
-		$('styles').value = item.training[1];
-		$('wname').value = item.wname[1];
+		ge('styles').value = item.training[1];
+		ge('wname').value = item.wname[1];
 		if(item.favorite[1] == "Yes") {
-			$('favorite').setAttribute("checked", "checked");
+			ge('favorite').setAttribute("checked", "checked");
 		}
-		$('howlong').value = item.howlong[1];
+		ge('howlong').value = item.howlong[1];
 		var radios = document.forms[0].timeofday;
 		for (var i=0, j=radios.length; i<j; i++) {
 			if(radios[i].value == "Morning" && item.timeofday[1] == "Morning") {
@@ -205,13 +205,13 @@ window.addEventListener("DOMContentLoaded", function() {
 				radios[i].setAttribute("checked", "checked");
 			}
 		}
-		$('completiondate').value = item.completiondate[1];
-		$('comments').value = item.comments[1];
+		ge('completiondate').value = item.completiondate[1];
+		ge('comments').value = item.comments[1];
 		// Remove event listener for 'save' button //
 		submitData.removeEventListener("click", saveData);
 		// Change submit button value from Save Workout to Save Changes //
-		$('saveData').value = "Save Changes";
-		var editSubmit = $('saveData');
+		ge('saveData').value = "Save Changes";
+		var editSubmit = ge('saveData');
 		// Save to original key value established for particular values //
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = key;
@@ -250,10 +250,10 @@ window.addEventListener("DOMContentLoaded", function() {
 	
 	function validate(e) {
 		// Define elements we want to check //
-		var getStyle = $('styles');
-		var getWname = $('wname');
-		var getCompletionDate = $('completiondate');
-		var getComments = $('comments');
+		var getStyle = ge('styles');
+		var getWname = ge('wname');
+		var getCompletionDate = ge('completiondate');
+		var getComments = ge('comments');
 		// Reset error messages //
 		errMsg.innerHTML = "";
 		getStyle.style.border = "1px solid black";
@@ -310,15 +310,15 @@ window.addEventListener("DOMContentLoaded", function() {
 		favoriteValue = "No",
 		timeValue,
 		confirmClear,
-		errMsg = $('errors')
+		errMsg = ge('errors')
 	;
 	
 	// Set Link & Submit Click Events //
-	var displayLink = $('showData');
+	var displayLink = ge('showData');
 	displayLink.addEventListener("click", getData);
-	var clearButton = $('clearData');
+	var clearButton = ge('clearData');
 	clearButton.addEventListener("click", clearData);
-	var submitData = $('saveData');
+	var submitData = ge('saveData');
 	submitData.addEventListener("click", validate);
 	
 	// Call Functions //

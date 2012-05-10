@@ -6,13 +6,26 @@ Project 2
 Body Health & Fitness
 https://github.com/AlucardFair/MiU-Project-2
 */
-body /*Formerly HTML*/ {
+
+.mainColor {
+	background-image: -webkit-linear-gradient(bottom, rgb(0,128,136), rgb(0,148,156), rgb(0,168,176));
+}
+
+.secondaryColor {
+	background-image: -webkit-linear-gradient(bottom, rgb(147,84,22), rgb(199,136,74), rgb(250,187,25));
+}
+
+.imgSize {
+	width: 100%;
+}
+
+/*
+body {
 	font-family: Helvetica, Roboto, Droid-Sans;
 	background-color: rgb(200,200,200);
 	margin: 0 auto;
 }
 
-/*
 body {
 	font-family: Helvetica, Roboto, Droid-Sans;
 	background-color: rgb(200,200,200);
@@ -23,7 +36,6 @@ body {
 	border-radius: 5px;
 	-webkit-box-shadow: 0 0 10px #000;
 }
-*/
 
 #home {
 	margin: 0 auto;
@@ -168,3 +180,4 @@ footer {
 	text-align: center;
 	color: rgb(88,88,88);
 }
+*/

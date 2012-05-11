@@ -19,6 +19,14 @@ https://github.com/AlucardFair/MiU-Project-2
 	width: 100%;
 }
 
+#home .ui-grid-a, .ui-grid-b {
+	text-align: center;
+}
+
+.indent {
+	text-indent: 40px;
+}
+
 /*
 body {
 	font-family: Helvetica, Roboto, Droid-Sans;
